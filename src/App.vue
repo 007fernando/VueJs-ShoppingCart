@@ -23,7 +23,7 @@ const newItemHighPriority= ref(false);
     </label>
     {{ newItemHighPriority ? "🔥" : "🧊" }}
     <!-- Boton de UI -->
-    <button v-on:click="items.phus( {id: items.length + 1, label: newItem})" class="btn btn-primary">Salvar Articulo</button>
+    <button v-on:click="items.puhs( {id: items.length + 1, label: newItem})" class="btn btn-primary">Salvar Articulo</button>
   </div>
   <ul>
     <li v-for="{ id, label } in items" v-bind:key="id">
