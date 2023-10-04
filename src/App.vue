@@ -12,12 +12,19 @@ const newItemHighPriority= ref(false);
 
 <template>
   <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
-  <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
- <!-- Check Boxes -->
- <label ><input v-model="newItemHighPriority" type="checkbox">
-  Alta Prioridad
-</label>
-    {{newItemHighPriority ?"🔥": "🧊"}}
+  <div class="add-item form">
+    <!-- Input de Nuevo Articulo -->
+    <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
+    <!-- Check Boxes -->
+    <label>
+      <input v-model="newItemHighPriority" 
+      type="checkbox">
+      Alta Prioridad
+    </label>
+    {{ newItemHighPriority ? "🔥" : "🧊" }}
+    <!-- Boton de UI -->
+    <button v-on:click="items.phus( {id: items.length + 1, label: newItem})" class="btn btn-primary">Salvar Articulo</button>
+  </div>
   <ul>
     <li v-for="{ id, label } in items" v-bind:key="id">
       🔹 {{ label }}
@@ -26,7 +33,7 @@ const newItemHighPriority= ref(false);
 </template>
 
 <style scoped>
-.shopping-cart-icon{
-font-size: 10rem;
+.shopping-cart-icon {
+  font-size: 2rem; /* Adjust the font-size value as per your desired size */
 }
 </style>
