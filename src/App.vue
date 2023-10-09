@@ -2,9 +2,9 @@
 import { ref } from 'vue';
 const header = ref('App Lista de compras');
 const items = ref([
-  {id: 1, label: '10 bolillos'},
-  {id: 2, label: '1 lata de frijoles'},
-  {id: 3, label: '2 lata de atún'}
+  // {id: 1, label: '10 bolillos'},
+  // {id: 2, label: '1 lata de frijoles'},
+  // {id: 3, label: '2 lata de atún'}
 ]);
 const saveItem = () => {
   items.value.push({id: items.value.length + 1, label: newItem.value})
@@ -16,7 +16,12 @@ const newItemHighPriority= ref(false);
 </script>
 
 <template>
-  <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
+  <div class="header">
+    <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
+    <button class="btn">Cancelar</button>
+    <button class="btn btn-primary">Agrear Artiiculo</button>
+
+  </div>
   <form v-on:submit.prevent= "saveItem" class="add-item form">
     <!-- Input de Nuevo Articulo -->
     <input v-model.trim="newItem" type="text" placeholder="Ingresar nuevo articulo">
@@ -35,6 +40,8 @@ const newItemHighPriority= ref(false);
       🔹 {{ label }}
     </li>
   </ul>
+  <p v-if="items.length == 0">🥀 Lista de compras Vacia 🥀</p>
+  <p v-else>🔥 Ingrese mas Items 🔥</p>
 </template>
 
 <style scoped>
